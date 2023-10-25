@@ -1,6 +1,6 @@
 import { getCollectionFilms } from 'api/getFilms'
 import React, { useCallback, useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export const Home = ({ }) => {
 
@@ -27,27 +27,16 @@ export const Home = ({ }) => {
   }, [fetchFilms])
 
   return (
-    <nav>
-      <div>
-        <span>
-          <NavLink to='/'>
-            Home
-          </NavLink>
-        </span>
-        <br />
-        <NavLink to='/movies'>
-          Movies
-        </NavLink>
-
-        <h1>Trending today</h1>
-        {isLoading && <h1>Loading...</h1>}
-        <ul>
-          {films && films.map((film) => (
-            <li key={film.id}>{film.original_title}</li>
-          ))}
-        </ul>
-      </div>
-    </nav>
-
+    <div>
+      <h1>Trending today</h1>
+      {isLoading && <h1>Loading...</h1>}
+      <ul>
+        {films && films.map((film) => (
+          <li key={film.id}>
+            <Link to='/movies/movieId' key={film.id}>{film.original_title}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
