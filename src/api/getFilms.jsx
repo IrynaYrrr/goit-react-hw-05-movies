@@ -1,10 +1,13 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = `https://api.themoviedb.org/3/`;
-
-const apiKey = '?api_key=3adf912e1176a1853c1356db72ac2ada';
-
 export const getCollectionFilms = async () => {
-  const { data } = await axios(`/trending/get-trending/movie/trending/get-trending?${apiKey}`)
+  const { data } = await axios({
+    method: "get",
+    url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+    headers:{
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYWRmOTEyZTExNzZhMTg1M2MxMzU2ZGI3MmFjMmFkYSIsInN1YiI6IjY1MmMwYWJjNzJjMTNlMDEzZDE1YzUzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hzf05Uu31G7_NhpUWVecKABBc5ROUSkbQVOs-Yw6zYQ',
+      Accept: 'application/json'
+    }
+  })
   return data
 }
