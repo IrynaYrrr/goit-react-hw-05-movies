@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 export const MovieDetails = () => {
   const location = useLocation()
+  const basePath = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
   const {
     adult,
     backdrop_path,
@@ -22,7 +23,7 @@ export const MovieDetails = () => {
   return (
     <div>
       <button>Go back</button>
-      <img src={poster_path} alt='...' />
+      <img src={basePath + poster_path} alt='...' />
       <h2>{original_title}</h2>
       <p>User score: {vote_average}</p>
       <h3>Overview:</h3>
