@@ -13,7 +13,7 @@ export const Home = ({ }) => {
       setIsLoading(true)
       setFilms(null)
       const data = await getCollectionFilms()
-      console.log(data);
+      // console.log(data);
       setFilms(data.results)
     } catch (error) {
       setError(error.response.data)
@@ -33,7 +33,7 @@ export const Home = ({ }) => {
       <ul>
         {films && films.map((film) => (
           <li key={film.id}>
-            <Link to='/movies/movieId' key={film.id}>{film.original_title}</Link>
+            <Link to={`/movies/${film.id}`} state={film}>{film.original_title}</Link>
           </li>
         ))}
       </ul>
