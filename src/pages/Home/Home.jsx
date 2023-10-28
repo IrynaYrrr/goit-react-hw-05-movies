@@ -1,12 +1,21 @@
 import { getCollectionFilms } from 'api/getFilms'
 import React, { useCallback, useEffect, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-export const Home = ({ }) => {
+export const Home = () => {
 
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [films, setFilms] = useState(null)
+  // const [searchParams, setSearchParams] = useSearchParams()
+  // const dataSearch = searchParams.get('search')
+
+
+  // useEffect(() => {
+  //   setSearchParams({search:'qwerty123'})
+  // }, [setSearchParams])
+
+
 
   const fetchFilms = useCallback(async () => {
     try {

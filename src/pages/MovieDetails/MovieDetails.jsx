@@ -1,30 +1,39 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 export const MovieDetails = () => {
+	const navigate = useNavigate()
   const location = useLocation()
+  const {movieId} = useParams()
+
   const basePath = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
+
   const {
-    adult,
-    backdrop_path,
-    genre_ids,
-    id,
+    // adult,
+    // backdrop_path,
+    // genre_ids,
+    // id,
     original_language,
     original_title,
     overview,
-    popularity,
     poster_path,
-    release_date,
-    title,
-    video,
+    // popularity,
+    // release_date,
+    // title,
+    // video,
+    // vote_count,
     vote_average,
-    vote_count
   } = location.state;
+console.log(location.state)
+const releaseDate = location.state.release_date.split('-')[0];
+
+console.log(releaseDate);
   return (
     <div>
-      <button>Go back</button>
-      <img src={basePath + poster_path} alt='...' />
-      <h2>{original_title}</h2>
+      <button onClick={() => navigate(-1)}>Go back</button>
+      <br />
+      <img src={basePath + poster_path} alt='...' style={{width: '20%'}} />
+      <h2>{original_title} ({releaseDate})</h2>
       <p>User score: {vote_average}</p>
       <h3>Overview:</h3>
       <p>{overview}</p>
