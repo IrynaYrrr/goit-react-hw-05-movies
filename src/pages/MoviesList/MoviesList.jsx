@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const MoviesList = ({ query }) => {
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [films, setFilms] = useState(null)

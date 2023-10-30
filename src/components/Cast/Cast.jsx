@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { getCast } from 'api/getFilms'
 
 const Cast = () => {
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [cast, setCast] = useState(null)

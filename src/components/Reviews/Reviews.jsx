@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { getReviews } from 'api/getFilms'
 
 const Reviews = () => {
+  // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [reviews, setReviews] = useState(null)
