@@ -22,7 +22,6 @@ export const Home = () => {
       setIsLoading(true)
       setFilms(null)
       const data = await getCollectionFilms()
-      // console.log(data);
       setFilms(data.results)
     } catch (error) {
       setError(error.response.data)
