@@ -1,10 +1,9 @@
-import { MoviesList } from 'pages/MoviesList/MoviesList'
+import MoviesList from 'pages/MoviesList/MoviesList'
 
-
-export const Home = () => {
+const Home = () => {
 
   return (
-
     <MoviesList />
   )
 }
+ export default Home

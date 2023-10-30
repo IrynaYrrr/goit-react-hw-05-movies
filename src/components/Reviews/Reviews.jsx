@@ -34,7 +34,7 @@ const Reviews = () => {
       {isLoading && <h1>Loading...</h1>}
       <ul>
         {reviews && reviews.map(({ author, content, id }) => (
-          <li key={id}>
+          <li style={{ listStyleType: 'none' }} key={id}>
             <b> {author}</b>
             <br />
             {content}

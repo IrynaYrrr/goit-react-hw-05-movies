@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const basePath = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
@@ -31,12 +31,12 @@ export const MovieDetails = () => {
       <br />
       <p>Additional information:</p>
       <ul>
-        <li>
+        <li style={{ listStyleType: 'none' }}>
           <Link to={`/movies/${id}/cast`} state={location.state}>
             Cast
           </Link>
         </li>
-        <li>
+        <li style={{ listStyleType: 'none' }}>
           <Link to={`/movies/${id}/reviews`} state={location.state}>
             Reviews
           </Link>
@@ -45,3 +45,5 @@ export const MovieDetails = () => {
     </div>
   )
 }
+
+export default MovieDetails

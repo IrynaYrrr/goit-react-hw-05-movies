@@ -2,7 +2,7 @@ import { getCollectionFilms, getFilmsBySearch } from 'api/getFilms'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export const MoviesList = ({ query }) => {
+const MoviesList = ({ query }) => {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [films, setFilms] = useState(null)
@@ -30,7 +30,7 @@ export const MoviesList = ({ query }) => {
       {isLoading && <h1>Loading...</h1>}
       <ul>
         {films && films.map((film) => (
-          <li key={film.id}>
+          <li style={{ listStyleType: 'none' }} key={film.id}>
             <Link to={`/movies/${film.id}`} state={film}>{film.original_title}</Link>
           </li>
         ))}
@@ -38,3 +38,5 @@ export const MoviesList = ({ query }) => {
     </div>
   )
 }
+
+export default MoviesList
