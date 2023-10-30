@@ -37,7 +37,7 @@ export const MovieDetails = () => {
           </Link>
         </li>
         <li>
-          <Link>
+          <Link to={`/movies/${id}/reviews`} state={location.state}>
             Reviews
           </Link>
         </li>
