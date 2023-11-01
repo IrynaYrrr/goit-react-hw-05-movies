@@ -2,7 +2,7 @@ import { getCollectionFilms } from 'api/getFilms'
 import MoviesList from 'components/MoviesList/MoviesList'
 import { useCallback, useEffect, useState } from 'react'
 
-const Home = ({ query }) => {
+const Home = () => {
 
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -28,7 +28,15 @@ const Home = ({ query }) => {
   return (
     <>
       {error && <h1>{error}</h1>}
-      {isLoading ? <h1>Loading</h1> : <MoviesList films={films} />}
+
+      {
+        isLoading
+          ? <h1>Loading</h1>
+          : <div>
+            <h1>Trending today</h1>
+            <MoviesList films={films} />
+          </div>
+      }
     </>
   )
 }
