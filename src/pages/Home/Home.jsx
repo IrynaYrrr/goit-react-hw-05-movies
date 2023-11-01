@@ -1,9 +1,35 @@
+import { getCollectionFilms } from 'api/getFilms'
 import MoviesList from 'components/MoviesList/MoviesList'
+import { useCallback, useEffect, useState } from 'react'
 
-const Home = () => {
+const Home = ({ query }) => {
+
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [films, setFilms] = useState(null)
+
+  const fetchFilms = useCallback(async () => {
+    try {
+      setIsLoading(true)
+      setFilms(null)
+      const data = await getCollectionFilms()
+      setFilms(data.results)
+    } catch (error) {
+      setError(error.response.data)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchFilms()
+  }, [fetchFilms])
 
   return (
-    <MoviesList />
+    <>
+      {error && <h1>{error}</h1>}
+      {isLoading ? <h1>Loading</h1> : <MoviesList films={films} />}
+    </>
   )
 }
- export default Home
+export default Home
