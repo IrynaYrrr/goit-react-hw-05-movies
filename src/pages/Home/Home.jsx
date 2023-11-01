@@ -1,4 +1,4 @@
-import MoviesList from 'pages/MoviesList/MoviesList'
+import MoviesList from 'components/MoviesList/MoviesList'
 
 const Home = () => {
 
