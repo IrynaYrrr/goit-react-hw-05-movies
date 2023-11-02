@@ -34,7 +34,7 @@ const Home = () => {
           ? <h1>Loading</h1>
           : <div>
             <h1>Trending today</h1>
-            <MoviesList films={films} />
+            <MoviesList films={films} stateFrom="/"/>
           </div>
       }
     </>

@@ -10,7 +10,6 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [films, setFilms] = useState(null)
 
-
   const searchQuery = searchParams.get('search') ?? ''
 
   const handleSubmit = (e) => {
@@ -36,6 +35,7 @@ const Movies = () => {
       }
     })
     fetchFilms(searchQuery)
+    setQuery(searchQuery)
   }, [searchQuery])
 
   return (
@@ -54,7 +54,7 @@ const Movies = () => {
               onChange={handleChange}
             />
             <button>Search</button>
-            {query && <MoviesList films={films} />}
+            {query && <MoviesList films={films} stateFrom={`/movies?search=${searchQuery}`}/>}
           </form>
       }
     </>

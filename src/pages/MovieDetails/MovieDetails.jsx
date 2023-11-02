@@ -19,7 +19,7 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <button onClick={() =>  navigate(-1)}>Go back</button>
+      <button onClick={() =>  navigate(location.state.from)}>Go back</button>
       <br />
       <img src={basePath + poster_path} alt='...' style={{ width: '20%' }} />
       <h2>{original_title} ({releaseDate})</h2>
