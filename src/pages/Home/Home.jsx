@@ -1,6 +1,6 @@
 import { getCollectionFilms } from 'api/getFilms'
 import MoviesList from 'components/MoviesList/MoviesList'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Home = () => {
 
@@ -8,22 +8,22 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [films, setFilms] = useState(null)
 
-  const fetchFilms = useCallback(async () => {
-    try {
-      setIsLoading(true)
-      setFilms(null)
-      const data = await getCollectionFilms()
-      setFilms(data.results)
-    } catch (error) {
-      setError(error.response.data)
-    } finally {
-      setIsLoading(false)
-    }
-  }, [])
 
   useEffect(() => {
+    const fetchFilms = (async () => {
+      try {
+        setIsLoading(true)
+        setFilms(null)
+        const data = await getCollectionFilms()
+        setFilms(data.results)
+      } catch (error) {
+        setError(error.response.data)
+      } finally {
+        setIsLoading(false)
+      }
+    })
     fetchFilms()
-  }, [fetchFilms])
+  }, [])
 
   return (
     <>
