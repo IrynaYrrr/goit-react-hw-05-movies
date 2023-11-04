@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MovieDetails = () => {
-  const navigate = useNavigate()
   const location = useLocation()
   const basePath = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
@@ -17,9 +16,11 @@ const MovieDetails = () => {
 
   const releaseDate = location.state.release_date.split('-')[0];
 
+  const backLinkHref = location.state?.from ?? "/movies";
+
   return (
     <div>
-      <button onClick={() =>  navigate(location.state.from)}>Go back</button>
+      <Link to={backLinkHref}>Go back</Link>
       <br />
       <img src={basePath + poster_path} alt='...' style={{ width: '20%' }} />
       <h2>{original_title} ({releaseDate})</h2>
