@@ -10,6 +10,7 @@ const MovieDetails = () => {
 
   const location = useLocation()
   const { id } = location.state;
+
   const basePath = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
   useEffect(() => {
