@@ -12,6 +12,18 @@ export const getCollectionFilms = async () => {
   return data
 }
 
+export const getMovieDetails = async (movieId) => {
+  const { data } = await axios({
+    method: "get",
+    url: `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+    headers:{
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYWRmOTEyZTExNzZhMTg1M2MxMzU2ZGI3MmFjMmFkYSIsInN1YiI6IjY1MmMwYWJjNzJjMTNlMDEzZDE1YzUzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hzf05Uu31G7_NhpUWVecKABBc5ROUSkbQVOs-Yw6zYQ',
+      Accept: 'application/json'
+    }
+  })
+  return data
+}
+
 export const getCast = async (movieId) => {
   const { data } = await axios({
     method: "get",
