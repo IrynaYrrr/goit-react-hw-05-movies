@@ -18,7 +18,6 @@ const MovieDetails = () => {
         setIsLoading(true)
         setFilm(null)
         const data = await getMovieDetails(id)
-        console.log(data);
         setFilm(data)
       } catch (error) {
         setError(error.response.data)
