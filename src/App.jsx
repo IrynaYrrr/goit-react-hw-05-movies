@@ -1,5 +1,5 @@
 import { Outlet, Route, Routes } from 'react-router-dom'
-import Layout from 'Layout/Layout'
+import Layout from 'components/Layout/Layout'
 import NotFound from 'pages/NotFound/NotFound'
 import { lazy } from 'react'
 
