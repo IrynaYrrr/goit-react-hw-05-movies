@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { getCast } from 'api/getFilms'
-import mainLogo from'../../assets/no-photo-icon.png';
+import noPhoto from '../../assets/no-photo-icon.png';
 
 
 const Cast = () => {
@@ -49,7 +49,7 @@ const Cast = () => {
                     <p>{character}</p>
                   </div>
                   : <div>
-                    <img src={mainLogo} alt='...' style={{ width: '20%' }} />
+                    <img src={noPhoto} alt='...' style={{ width: '20%' }} />
                     <h3>{name}</h3>
                     <p>{character}</p>
                   </div>
