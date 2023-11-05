@@ -31,8 +31,6 @@ const Cast = () => {
     fetchCast()
   }, [id])
 
-  console.log(cast);
-
   return (
     <div>
       {error && <h1>{error}</h1>}
