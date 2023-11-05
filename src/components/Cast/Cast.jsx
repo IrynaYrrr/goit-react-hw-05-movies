@@ -40,18 +40,19 @@ const Cast = () => {
       <ul>
         {cast && cast.map(({ profile_path, name, character, id }) => (
           <li style={{ listStyleType: 'none' }} key={id}>
-            {
-              profile_path
-                ? <div>
-                  <img src={basePath + profile_path} alt='...' style={{ width: '20%' }} />
-                  <h3>{name}</h3>
-                  <p>{character}</p>
-                </div>
-                : <div>
-                  <img src={noPhoto} alt='...' style={{ width: '20%' }} />
-                  <h3>{name}</h3>
-                  <p>{character}</p>
-                </div>
+            {profile_path
+              ? <div>
+                <img src={basePath + profile_path} alt='...' style={{ width: '20%' }} />
+                <h3>{name}</h3>
+                <p>{character}</p>
+                <hr style={{ border: '2px solid black' }} />
+              </div>
+              : <div>
+                <img src={noPhoto} alt='...' style={{ width: '20%' }} />
+                <h3>{name}</h3>
+                <p>{character}</p>
+                <hr style={{ border: '2px solid black' }} />
+              </div>
             }
           </li>
         ))}
