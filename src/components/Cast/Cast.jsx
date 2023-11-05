@@ -34,32 +34,29 @@ const Cast = () => {
   console.log(cast);
 
   return (
-    <>
+    <div>
       {error && <h1>{error}</h1>}
-      <div>
-        {isLoading && <h1>Loading...</h1>}
-        <ul>
-          {cast && cast.map(({ profile_path, name, character, id }) => (
-            <li style={{ listStyleType: 'none' }} key={id}>
-              {
-                profile_path
-                  ? <div>
-                    <img src={basePath + profile_path} alt='...' style={{ width: '20%' }} />
-                    <h3>{name}</h3>
-                    <p>{character}</p>
-                  </div>
-                  : <div>
-                    <img src={noPhoto} alt='...' style={{ width: '20%' }} />
-                    <h3>{name}</h3>
-                    <p>{character}</p>
-                  </div>
-              }
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
-
+      {isLoading && <h1>Loading...</h1>}
+      <ul>
+        {cast && cast.map(({ profile_path, name, character, id }) => (
+          <li style={{ listStyleType: 'none' }} key={id}>
+            {
+              profile_path
+                ? <div>
+                  <img src={basePath + profile_path} alt='...' style={{ width: '20%' }} />
+                  <h3>{name}</h3>
+                  <p>{character}</p>
+                </div>
+                : <div>
+                  <img src={noPhoto} alt='...' style={{ width: '20%' }} />
+                  <h3>{name}</h3>
+                  <p>{character}</p>
+                </div>
+            }
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
