@@ -28,10 +28,17 @@ const Reviews = () => {
     fetchReviews()
   }, [id])
 
+
+  if (error) {
+    return <h1>{error}</h1>
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <div>
-      {error && <h1>{error}</h1>}
-      {isLoading && <h1>Loading...</h1>}
       {reviews && reviews[0]
         ? <ul>
           {reviews.map(({ author, content, id }) => (

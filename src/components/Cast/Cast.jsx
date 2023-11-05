@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { getCast } from 'api/getFilms'
 import noPhoto from '../../assets/no-photo-icon.png';
+import NotFound from 'pages/NotFound/NotFound';
 
 
 const Cast = () => {
@@ -31,30 +32,39 @@ const Cast = () => {
     fetchCast()
   }, [id])
 
+  if (error) {
+    return <h1>{error}</h1>
+  }
+
+  if (isLoading) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <div>
-      {error && <h1>{error}</h1>}
-      {isLoading && <h1>Loading...</h1>}
-      <ul>
-        {cast && cast.map(({ profile_path, name, character, id }) => (
-          <li style={{ listStyleType: 'none' }} key={id}>
-            {profile_path
-              ? <div>
-                <img src={basePath + profile_path} alt='...' style={{ width: '20%' }} />
-                <h3>{name}</h3>
-                <p>{character}</p>
-                <hr style={{ border: '2px solid black' }} />
-              </div>
-              : <div>
-                <img src={noPhoto} alt='...' style={{ width: '20%' }} />
-                <h3>{name}</h3>
-                <p>{character}</p>
-                <hr style={{ border: '2px solid black' }} />
-              </div>
-            }
-          </li>
-        ))}
-      </ul>
+      {cast && cast[0] ?
+        <ul>
+          {cast.map(({ profile_path, name, character, id }) => (
+            <li style={{ listStyleType: 'none' }} key={id}>
+              {profile_path
+                ? <div>
+                  <img src={basePath + profile_path} alt='...' style={{ width: '20%' }} />
+                  <h3>{name}</h3>
+                  <p>{character}</p>
+                  <hr style={{ border: '2px solid black' }} />
+                </div>
+                : <div>
+                  <img src={noPhoto} alt='...' style={{ width: '20%' }} />
+                  <h3>{name}</h3>
+                  <p>{character}</p>
+                  <hr style={{ border: '2px solid black' }} />
+                </div>
+              }
+            </li>
+          ))
+          }
+        </ul>
+        : <NotFound />}
     </div>
   )
 }
