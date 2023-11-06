@@ -18,7 +18,7 @@ const MovieDetails = () => {
     const fetchFilm = (async () => {
       try {
         setIsLoading(true)
-        setFilm(null)
+
         const data = await getMovieDetails(movieId)
         setFilm(data)
       } catch (error) {
@@ -37,7 +37,7 @@ const MovieDetails = () => {
       {error && <h1>{error}</h1>}
       {isLoading ? <h1>Loading</h1>
         : <div>
-          {film?.length > 0 && (
+          {film && (
             <>
               <Link to={backLinkHref.current}>Go back</Link>
               <br />
@@ -69,5 +69,4 @@ const MovieDetails = () => {
     </>
   )
 }
-
 export default MovieDetails
