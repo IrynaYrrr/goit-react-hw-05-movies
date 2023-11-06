@@ -35,7 +35,6 @@ const Movies = () => {
       }
     })
     fetchFilms(searchQuery)
-    setQuery(searchQuery)
   }, [searchQuery])
 
   return (
@@ -44,18 +43,20 @@ const Movies = () => {
       {
         isLoading
           ? <h1>Loading</h1>
-          : <form onSubmit={handleSubmit}>
-            <input
-              name='title'
-              type='text'
-              className='form-control'
-              id='exampleInputTodo'
-              value={query}
-              onChange={handleChange}
-            />
-            <button>Search</button>
-            {query && <MoviesList films={films} />}
-          </form>
+          : <div>
+            <form onSubmit={handleSubmit}>
+              <input
+                name='title'
+                type='text'
+                className='form-control'
+                id='exampleInputTodo'
+                value={query}
+                onChange={handleChange}
+              />
+              <button>Search</button>
+            </form>
+            {films?.length > 0 && <MoviesList films={films} />}
+          </div>
       }
     </>
   )

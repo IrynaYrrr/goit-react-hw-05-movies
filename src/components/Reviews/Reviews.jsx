@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getReviews } from 'api/getFilms'
 import NotFound from 'pages/NotFound/NotFound'
 
@@ -8,16 +8,14 @@ const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [reviews, setReviews] = useState(null)
 
-  const location = useLocation()
-
-  const { id } = location.state;
+  const { movieId } = useParams()
 
   useEffect(() => {
     const fetchReviews = (async () => {
       try {
         setIsLoading(true)
         setReviews(null)
-        const data = await getReviews(id)
+        const data = await getReviews(movieId)
         setReviews(data.results)
       } catch (error) {
         setError(error.response.data)
@@ -26,7 +24,7 @@ const Reviews = () => {
       }
     })
     fetchReviews()
-  }, [id])
+  }, [movieId])
 
 
   if (error) {
@@ -39,10 +37,10 @@ const Reviews = () => {
 
   return (
     <div>
-      {reviews && reviews[0]
+      {reviews.length > 0
         ? <ul>
-          {reviews.map(({ author, content, id }) => (
-            <li style={{ listStyleType: 'none' }} key={id}>
+          {reviews.map(({ author, content, movieId }) => (
+            <li style={{ listStyleType: 'none' }} key={movieId}>
               <b> {author}</b>
               <br />
               {content}

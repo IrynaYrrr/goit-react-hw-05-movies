@@ -1,6 +1,6 @@
 import { getMovieDetails } from 'api/getFilms';
-import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react'
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
 
@@ -9,7 +9,8 @@ const MovieDetails = () => {
   const [film, setFilm] = useState(null)
 
   const location = useLocation()
-  const { id } = location.state;
+  const { movieId } = useParams()
+
 
   const basePath = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
@@ -18,7 +19,7 @@ const MovieDetails = () => {
       try {
         setIsLoading(true)
         setFilm(null)
-        const data = await getMovieDetails(id)
+        const data = await getMovieDetails(movieId)
         setFilm(data)
       } catch (error) {
         setError(error.response.data)
@@ -27,18 +28,18 @@ const MovieDetails = () => {
       }
     })
     fetchFilm()
-  },[id])
+  }, [movieId])
 
-  const backLinkHref = location.state?.from ?? "/movies";
+  const backLinkHref = useRef(location.state?.from ?? "/movies")
 
   return (
     <>
       {error && <h1>{error}</h1>}
       {isLoading ? <h1>Loading</h1>
         : <div>
-          {film && (
+          {film?.length > 0 && (
             <>
-              <Link to={backLinkHref}>Go back</Link>
+              <Link to={backLinkHref.current}>Go back</Link>
               <br />
               <img src={basePath + film.poster_path} alt='...' style={{ width: '20%' }} />
               <h2>{film.original_title} ({film.release_date.split('-')[0]})</h2>
@@ -51,18 +52,19 @@ const MovieDetails = () => {
               <p>Additional information:</p>
               <ul>
                 <li style={{ listStyleType: 'none' }}>
-                  <Link to={`/movies/${id}/cast`} state={location.state}>
+                  <Link to={'/cast'}>
                     Cast
                   </Link>
                 </li>
                 <li style={{ listStyleType: 'none' }}>
-                  <Link to={`/movies/${id}/reviews`} state={location.state}>
+                  <Link to={'/reviews'}>
                     Reviews
                   </Link>
                 </li>
               </ul>
             </>
           )}
+          <Outlet />
         </div>}
     </>
   )

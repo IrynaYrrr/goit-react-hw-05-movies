@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Layout from 'components/Layout/Layout'
 import NotFound from 'pages/NotFound/NotFound'
 import { lazy } from 'react'
@@ -17,12 +17,7 @@ const App = () => {
       <Route path='/' element={<Layout />}>
         <Route path='' element={<Home />} />
         <Route path='movies' element={<Movies />} />
-        <Route path='movies/:movieId' element={
-          <>
-            <MovieDetails />
-            <Outlet />
-          </>
-        }>
+        <Route path='movies/:movieId' element={<MovieDetails />}>
           <Route path='cast' element={<Cast />} />
           <Route path='reviews' element={<Reviews />} />
         </Route>
