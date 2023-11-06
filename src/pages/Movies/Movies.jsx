@@ -54,7 +54,7 @@ const Movies = () => {
               onChange={handleChange}
             />
             <button>Search</button>
-            {query && <MoviesList films={films} stateFrom={`/movies?search=${searchQuery}`}/>}
+            {query && <MoviesList films={films} />}
           </form>
       }
     </>
