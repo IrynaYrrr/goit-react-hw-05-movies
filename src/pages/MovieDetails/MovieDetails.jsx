@@ -52,12 +52,12 @@ const MovieDetails = () => {
               <p>Additional information:</p>
               <ul>
                 <li style={{ listStyleType: 'none' }}>
-                  <Link to={'/cast'}>
+                  <Link to={'cast'}>
                     Cast
                   </Link>
                 </li>
                 <li style={{ listStyleType: 'none' }}>
-                  <Link to={'/reviews'}>
+                  <Link to={'reviews'}>
                     Reviews
                   </Link>
                 </li>
