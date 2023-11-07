@@ -40,7 +40,7 @@ const Cast = () => {
 
   return (
     <div>
-      {cast.length > 0 ?
+      {cast?.length > 0 ?
         <ul>
           {cast.map(({ profile_path, name, character, movieId }) => (
             <li style={{ listStyleType: 'none' }} key={movieId}>
