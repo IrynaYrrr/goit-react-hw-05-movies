@@ -41,9 +41,12 @@ const Reviews = () => {
         ? <ul>
           {reviews.map(({ author, content, movieId }) => (
             <li style={{ listStyleType: 'none' }} key={movieId}>
+              <br />
               <b> {author}</b>
               <br />
+              <br />
               {content}
+              <hr style={{ border: '2px solid black' }} />
             </li>
           ))}
         </ul>
