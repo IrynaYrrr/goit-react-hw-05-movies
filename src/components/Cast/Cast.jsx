@@ -42,8 +42,8 @@ const Cast = () => {
     <div>
       {cast?.length > 0 ?
         <ul>
-          {cast.map(({ profile_path, name, character, movieId }) => (
-            <li style={{ listStyleType: 'none' }} key={movieId}>
+          {cast.map(({ profile_path, name, character, id }) => (
+            <li style={{ listStyleType: 'none' }} key={id}>
               <div>
                 <img src={profile_path ? basePath + profile_path : noPhoto} alt='...' style={{ width: '20%' }} />
                 <h3>{name}</h3>

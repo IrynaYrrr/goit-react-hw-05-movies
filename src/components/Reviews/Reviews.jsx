@@ -39,8 +39,8 @@ const Reviews = () => {
     <div>
       {reviews?.length > 0
         ? <ul>
-          {reviews.map(({ author, content, movieId }) => (
-            <li style={{ listStyleType: 'none' }} key={movieId}>
+          {reviews.map(({ author, content, id }) => (
+            <li style={{ listStyleType: 'none' }} key={id}>
               <br />
               <b> {author}</b>
               <br />
